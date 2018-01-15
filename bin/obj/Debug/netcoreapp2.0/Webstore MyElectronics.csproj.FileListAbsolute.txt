@@ -1,0 +1,10 @@
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb

@@ -1,0 +1,66 @@
+@model IEnumerable<Order>
+
+
+<div class="my-page">
+
+<nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="Index">Wishlist</a></li>
+                    <li><a asp-controller="MyAccount" asp-action="EditUser" asp-route-id="@User.Identity.Name">Account Info</a></li>
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="OrderHistory" asp-route-id="@User.Identity.Name">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+@using (Html.BeginForm())
+{
+
+    <h2 class="page-head"><i class="fa fa-envelope" aria-hidden="true"></i> Order History</h2>
+    <hr>
+
+    @if(@Model.Count() >0)
+    {
+    <table class="table">
+        <tr>
+            <th>Order Number</th>
+            <th>Order Date</th>
+            <th>Order Price</th>
+            <th></th>
+        </tr>
+
+
+        @foreach(var order in Model){
+            <tr>
+                <td>
+                    @order.OrderId
+                </td>
+                <td>
+                    @order.OrderPlaced       
+                </td>
+                <td>
+                €@order.OrderTotal
+                </td>
+                <td>
+                <a class="buy-btn btn btn-info" asp-controller="MyAccount" asp-action="OrderDetails" asp-route-id="@order.OrderId">View Order Details</a>
+                </td>
+            </tr>
+        }
+    </table>
+    }
+    if(@Model.Count()<= 0)
+    {
+        <h2>You did not place any orders yet.</h2>
+    }  
+}
+</div>

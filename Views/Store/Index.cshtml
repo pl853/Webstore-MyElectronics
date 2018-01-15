@@ -1,0 +1,36 @@
+@model IEnumerable<Category>
+
+@{
+    ViewBag.Title = "Store";
+}
+
+@using (Html.BeginForm())
+{
+   <div id="wrapper" class="toggled">
+        <div id="sidebar-wrapper">
+        
+        </div>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="container body-content">
+            <h2>Browse Category</h2>
+            <p>
+                Select from @Model.Count()
+                genres:
+            </p>
+            <ul>
+                @foreach(var category in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-4 text">
+                            <h5>@Html.ActionLink(category.CategoryName,"Browse","Store",new {category=category.CategoryName})</h5>
+                        </div>
+                    </div>
+                }
+            </ul>
+
+        </div>
+    </div> 
+    
+    
+}

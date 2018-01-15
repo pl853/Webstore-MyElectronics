@@ -1,0 +1,22 @@
+@model AddUserRole
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    ViewBag.Title ="AddUserRole";
+}
+
+
+@using (Html.BeginForm())
+{
+    <form asp-controller="StoreManager" asp-action="DeleteUserRole">
+        <div class="form-horizontal">
+            <h1>Delete role for @Model.Email</h1>
+            <hr />
+            <div asp-validation-summary="All"></div>
+
+            <input asp-for="UserId" type="hidden"/>
+            <select asp-for="NewRole" asp-items="Model.Roles"></select>
+            <input type="submit" value="Delete role"/>
+    </form>
+}

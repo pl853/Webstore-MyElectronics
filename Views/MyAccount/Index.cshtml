@@ -1,0 +1,102 @@
+@model PaginatedList<Webstore_MyElectronics.Models.UserWishList>
+
+<div class="wish-page">
+
+<nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="Index">Wishlist</a></li>
+                    <li><a asp-controller="MyAccount" asp-action="EditUser" asp-route-id="@User.Identity.Name">Account Info</a></li>
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="OrderHistory" asp-route-id="@User.Identity.Name">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+@using (Html.BeginForm())
+{
+
+    <h2 class="page-head"><i class="fa fa-star" aria-hidden="true"></i> My Wishlist</h2>
+    <hr>
+
+    <table class="table">
+
+    @if(@Model.Count()<=0)
+    {
+        <h1>There are no products in your WishList.</h1>
+        <h2>To go to the store please click     <span class="glyphicon glyphicon-arrow-right"></span><a asp-controller="Search" asp-action="Index"> Store</a> and press the star to add a product</h2>
+    }
+    @if(@Model.Count()>0)
+    {
+    <tr>
+        <th></th>
+        <th>Product Name</th>
+        <th>Specifications</th>
+        <th>Product Price</th>
+    </tr>
+    }
+
+    @foreach(var Product in Model){
+        <tr>
+            <td>
+               <img style="width:150px;"src="@Html.DisplayFor(modelProduct => Product.product.ImgUrl)">
+            </td>
+            <td>
+                <h4 class="prod-tit">@Html.ActionLink(Product.product.ProductName,"Details","Search",new { id=Product.product.ProductId})</h4>
+                
+            </td>
+            <td>
+            <ul>
+                <li>@Html.DisplayFor(modelProduct => Product.product.spec1)</li>
+                <li>@Html.DisplayFor(modelProduct => Product.product.spec2)</li>
+                <li>@Html.DisplayFor(modelProduct => Product.product.spec3)</li>
+                <li>@Html.DisplayFor(modelProduct => Product.product.spec4)</li>
+                <li>@Html.DisplayFor(modelProduct => Product.product.spec5)</li>
+            </ul>
+
+            </td>
+            <td>
+                €@Html.DisplayFor(modelProduct => Product.product.ProductPrice)
+            </td>
+            <td>
+            <a asp-controller="UserWishList" asp-action="RemoveFromSavedProducts" asp-route-id="@Product.ListId" >
+                <span class="glyphicon glyphicon-remove text-danger remove"></span>
+        </a>
+            </td>
+        </tr>
+    }
+    </table>  
+    @if(@Model.Count()>0)
+    {
+       <div style="margin-bottom:30px;" class="prevnext">
+    @{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+</div>
+    } 
+    
+}
+
+</div>

@@ -1,0 +1,70 @@
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\Pieter\Documents\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\Asra's PC\Desktop\Projects\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\fredd\Downloads\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\fredd\Downloads\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\fredd\Downloads\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\fredd\Downloads\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\fredd\Downloads\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\fredd\Downloads\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\fredd\Downloads\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\fredd\Downloads\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\fredd\Downloads\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\fredd\Downloads\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\fredd\Downloads\webstore test\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Documents\Persoonlijk\Projecten\Websites\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Desktop\Webstore MyElectronics\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb

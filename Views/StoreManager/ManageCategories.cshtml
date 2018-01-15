@@ -1,0 +1,62 @@
+@model IEnumerable<Category>
+
+@{
+    ViewBag.Title = "ManageCategories";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="navbar navbar navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse main-nav">
+                <ul class="nav navbar-nav">
+                    <li><a asp-action="Index">Webshop overview</a></li>
+                    <li><a asp-action="ManageProducts">Manage Products</a></li>
+                    <li><a asp-action="ManageUsers">Manage Users</a></li>
+                    <li><a asp-action="ManageCategories">Manage Product categories</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+    
+    <h1>Manage categories</h1>
+    <p>@Html.ActionLink("Create categorie","CreateCategory","StoreManager")</p>
+
+    <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach(var category in Model){
+        <tr>
+            <td>
+                @Html.DisplayFor(modelCategory => category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelCategory => category.CategoryDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit ","EditCategory", new {id = category.CategoryId})|
+                @Html.ActionLink("Delete ","DeleteCategory", new {id = category.CategoryId})
+            </td>
+        </tr>
+    }
+    </table>   
+
+}

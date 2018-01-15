@@ -1,0 +1,48 @@
+@model Product
+
+@{
+    ViewBag.Title = "DeleteProduct";
+}
+
+
+@using (Html.BeginForm())
+{
+    <h1>Delete</h1>
+    @Html.AntiForgeryToken();
+    <div class="form-horizontal">
+        <h4>Are you sure you want to delete @Model.ProductName</h4>
+        <hr />
+        <div class="form-group"> 
+            <label asp-for="CategoryId" class="control-label col-md-2"></label>
+            <div class="col-md-3">
+                <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(@ViewBag.CategoryId,"CategoryId","CategoryName"))"></select>
+                @Html.ValidationMessageFor(model=>model.CategoryId)
+            </div>     
+        </div>
+        <div class="form-group">
+            <label asp-for="ProductName" class="control-label col-md-2"></label>
+            <div class="col-md-3">
+                <input asp-for="ProductName" class="form-control"/>
+                @Html.ValidationMessageFor(model=>model.ProductName)
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProductPrice" class="control-label col-md-2"></label>
+            <div class="col-md-3">
+                <input asp-for="ProductPrice" class="form-control"/>
+                @Html.ValidationMessageFor(model=>model.ProductPrice)
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImgUrl" class="control-label col-md-2"></label>
+            <div class="col-md-3">
+                <input asp-for="ImgUrl" class="form-control"/>
+                @Html.ValidationMessageFor(model=>model.ImgUrl)
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-default"/>
+            <a class="btn btn-default"asp-action="ManageProducts">Back to categorie list</a>
+        </div>
+    </div>
+}

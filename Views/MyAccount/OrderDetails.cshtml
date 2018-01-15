@@ -1,0 +1,118 @@
+@model Order
+
+
+<div class="my-page">
+
+<nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="Index">Wishlist</a></li>
+                    <li><a asp-controller="MyAccount" asp-action="EditUser" asp-route-id="@User.Identity.Name">Account Info</a></li>
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="OrderHistory" asp-route-id="@User.Identity.Name">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+@using (Html.BeginForm())
+{
+
+    <h2 class="page-head"><i class="fa fa-envelope" aria-hidden="true"></i> Order Details</h2>
+    <hr>
+
+    <div class="col-md-8">
+        <div class="col-md-4">
+            <h4>Order Number: @Model.OrderId</h4>
+        </div>
+        <div class="col-md-6">
+            <h4>Order Date: @Model.OrderPlaced</h4>
+        </div>
+        <hr>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th></th>
+                <th class="text-right">Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td class="text-center"><img style="height:140px;" src="@Model.prod1img"/></td>
+                    <td class="text-left"><li><h4>@Model.prod1name</h4></li></td>
+                    <td class="text-right">€@Model.prod1price</td>
+                </tr>
+                @if(@Model.prod2price >0)
+                {
+                <tr>
+                    <td class="text-center"><img style="height:140px;" src="@Model.prod2img"/></td>
+                    <td class="text-left"><li><h4>@Model.prod2name</h4></li></td>
+                    <td class="text-right">€@Model.prod2price</td>
+                </tr>
+                }
+                @if(@Model.prod3price >0)
+                {
+                <tr>
+                    <td class="text-center"><img style="height:140px;" src="@Model.prod3img"/></td>
+                    <td class="text-left"><li><h4>@Model.prod3name</h4></li></td>
+                    <td class="text-right">€@Model.prod3price</td>
+                </tr>
+                }
+                @if(@Model.prod4price >0)
+                {
+                <tr>
+                    <td class="text-center"><img style="height:140px;" src="@Model.prod4img"/></td>
+                    <td class="text-left"><li><h4>@Model.prod4name</h4></li></td>
+                    <td class="text-right">€@Model.prod4price</td>
+                </tr>
+                }
+                @if(@Model.prod5price >0)
+                {
+                <tr>
+                    <td class="text-center"><img style="height:140px;" src="@Model.prod5img"/></td>
+                    <td class="text-left"><li><h4>@Model.prod5name</h4></li></td>
+                    <td class="text-right">€@Model.prod5price</td>
+                </tr>
+                }
+
+                
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right">Total:
+
+                </td>
+                <td class="text-right">
+                    €@Model.OrderTotal
+                </td>
+            </tr>
+        </tfoot>
+    </table> 
+
+    </div>
+
+
+    <div class="col-md-4">
+    <h4>Contact Information:</h4>
+    <hr>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <h4>@Model.Email</h4>
+    <h4>@Model.PhoneNumber</h4>
+    <h4>@Model.AddressLine1 @Model.AddressLine2</h4>
+    <h4>@Model.ZipCode</h4>
+    <h4>@Model.State</h4>
+    <h4>@Model.Country</h4>
+    </div>
+
+}
+</div>

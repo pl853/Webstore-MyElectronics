@@ -1,0 +1,126 @@
+@model PaginatedList<Webstore_MyElectronics.Models.Product>
+    
+
+@{
+    ViewBag.Title = "ManageProducts";
+}
+
+
+
+@using (Html.BeginForm())
+{<div class="store-page">
+    <div class="navbar navbar navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse main-nav">
+                <ul class="nav navbar-nav">
+                    <li><a asp-action="Index">Webshop overview</a></li>
+                    <li><a asp-action="ManageProducts">Manage Products</a></li>
+                    <li><a asp-action="ManageUsers">Manage Users</a></li>
+                    <li><a asp-action="ManageCategories">Manage Product categories</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+    
+    <h1 style="margin-bottom:20px;">Manage Products</h1>
+
+    <div class="col-md-3">
+    <form asp-controller="Search" asp-action="Index" method="get">
+    <div class="form-action no-color">
+            <input type="text" name="searchString" value="@ViewBag.CurrentFilter"/>
+            <button type="submit" id="searchbtn"> 
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </div>
+            </form>
+
+            <ul>
+            <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-laptop"></span><a asp-controller="StoreManager" asp-action="ManageProducts" asp-route-category="1">Laptops</a></li>
+                <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="StoreManager" asp-action="ManageProducts" asp-route-category="2">Desktops</a></li>
+                <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">Tablets</a></li>
+                <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">Phones</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+    <p>@Html.ActionLink("Create product","CreateProduct","StoreManager")</p>
+
+    <table class="table">
+    <tr>
+        <th>
+            Category
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Product Price
+        </th>
+        <th>
+            Stock
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach(var Product in Model){
+        <tr>
+            <td>
+                
+            </td>
+            <td>
+                @Product.ProductName
+            </td>
+            <td>
+                €@Product.ProductPrice
+            </td>
+            <td>
+            @if(Product.Stock <=0)
+            {
+                <p style="color:red;">@Product.Stock</p>
+            }
+            @if(Product.Stock >0)
+            {
+                <p >@Product.Stock</p>
+            }
+            </td>
+            <td>
+                @Html.ActionLink("Edit ","EditProduct", new {id = Product.ProductId})|
+                @Html.ActionLink("Details","DetailsProduct", new {id = Product.ProductId})|
+                @Html.ActionLink("Delete","DeleteProduct", new {id = Product.ProductId})
+            </td>
+        </tr>
+    }
+    </table>
+        <div class="prevnext">
+    @{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="ManageProducts"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="ManageProducts"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+</div>
+    
+</div>   
+</div>
+}

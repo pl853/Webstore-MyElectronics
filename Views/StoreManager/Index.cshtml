@@ -1,0 +1,96 @@
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="navbar navbar navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse main-nav">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Webshop overview</a></li>
+                    <li><a asp-action="ManageProducts">Manage Products</a></li>
+                    <li><a asp-action="ManageUsers">Manage Users</a></li>
+                    <li><a asp-action="ManageCategories">Manage Product categories</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+    
+}
+
+
+
+
+<script type="text/javascript">
+  window.onload = function () {
+	var dps = @Html.Raw(ViewBag.DataPoints);
+    var dpsq = @Html.Raw(ViewBag.DataPointsbest);
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+
+      title:{
+      text: "MonthlyRevenue per month"
+      },
+      axisX: {
+        interval:1,
+        intervalType: "month"
+      },
+      axisY:{
+        includeZero: false
+
+      },
+      data: [
+      {
+        type: "line",
+
+        dataPoints: dps
+      }
+      ]
+    });
+
+
+var chart1 = new CanvasJS.Chart("chartContainer1",
+	{
+		title:{
+			text: "Gaming Consoles Sold in 2012"
+		},
+		legend: {
+			maxWidth: 500,
+			itemWidth: 120
+		},
+		data: [
+		{
+			type: "pie",
+			showInLegend: true,
+			legendText: "{indexLabel}",
+			dataPoints: dpsq
+		}
+		]
+	});
+
+    
+    chart1.render();
+    chart.render();
+  }
+  </script>
+
+
+<div class="col-md-12">
+	<div style="margin-bottom:500px;" id="chartContainer" style="height: 500px; width: 90%;"></div>
+    <div id="chartContainer1" style="height: 500px; width: 90%;"></div>
+</div>
+
+
+
+

@@ -1,0 +1,68 @@
+@model ShoppingCartViewModel
+
+<div class="cart-page">
+    <h2 class="page-head"><i class="fa fa-shopping-cart"></i> My Shoppingcart</h2>
+    <hr>
+
+    @if(Model.ShoppingCartTotal!=0)
+    {
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th></th>
+                 <th>Selected amount</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <tr>
+                    <td class="text-center"><img style="height:140px;" src="@line.Product.ImgUrl"/></td>
+                    <td class="text-left"><ul>
+                                            <li><h4>@Html.ActionLink(@line.Product.ProductName,"Details","Search",new { id=@line.Product.ProductId})</h4></li>
+                                            <li>@line.Product.spec1</li>
+                                            <li>@line.Product.spec2</li>
+                                            <li>@line.Product.spec3</li>
+                                            <li>@line.Product.spec4</li>
+                                            <li>@line.Product.spec5</li>
+                                            </ul></td>
+                    <td class="text-center"><a class="fa fa-minus-circle" style="font-size:20px;" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-ProductId="@line.Product.ProductId"></a>@line.Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@if(line.Product.Stock>0){<a class="fa fa-plus-circle" style="font-size:20px;"asp-controller="ShoppingCart" asp-action="IncrementProduct" asp-route-ProductId="@line.Product.ProductId"></a>}@if(line.Product.Stock<=0){<a class="fa fa-plus-circle"  style="color:grey; hover:none; font-size:20px;"></a>}</td>
+                    <td class="text-right">@line.Product.ProductPrice.ToString("c")</td>
+                    <td class="text-right">
+                        @((line.Amount * line.Product.ProductPrice).ToString("c"))
+                    </td>
+                    <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveAllFromShoppingCart" asp-route-ProductId="@line.Product.ProductId"></a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right">Total:
+
+                </td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    @if(User.Identity.IsAuthenticated)
+    {
+        <a class="order-btn btn btn-success"asp-controller="Order" asp-action="Checkout" asp-route-id="@User.Identity.Name">Order</a>
+    }
+    @if(!User.Identity.IsAuthenticated)
+    {
+        <a class="order-btn btn btn-success"asp-controller="Order" asp-action="unCheckout">Order</a>
+    }
+        
+    }
+    @if(Model.ShoppingCartTotal==0){
+        <h1>There are no products in your cart.</h1>
+        <h2>To go to the store please click     <span class="glyphicon glyphicon-arrow-right"></span><a asp-controller="Search" asp-action="Index"> Store</a></h2>
+    }
+</div>

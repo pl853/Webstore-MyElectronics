@@ -1,0 +1,121 @@
+@model EditUser
+
+<div class="my-page">
+
+<nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="Index">Wishlist</a></li>
+                    <li><a asp-controller="MyAccount" asp-action="EditUser" asp-route-id="@User.Identity.Name">Account Info</a></li>
+                    <li><a asp-area="" asp-controller="MyAccount" asp-action="OrderHistory" asp-route-id="@User.Identity.Name">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+@using (Html.BeginForm())
+{
+    <form>
+        <div style="width:90%; margin-bottom:100px;" class="form-horizontal">
+            <h1 style="text-align:center; font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color:orange; font-size:50px;" class="fa fa-user" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;Account Information</h1>
+            <hr />
+            <div class="form-group"> 
+                <label asp-for="Email" class="control-label col-md-5"></label>
+                <div class="col-md-4">
+                    <input asp-for="Email" class="form-control" />
+                </div>     
+            </div>
+            <h5 style="margin-left:40%">Note: if you change your email you will have to log in again</h5>
+
+        <div class="form-group">
+                <label asp-for="Password" class="control-label col-md-5"></label>
+                <div class="col-md-4">
+                    <input asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label col-md-5"></label>
+                <div class="col-md-4">
+                    <input asp-for="ConfirmPassword" class="form-control">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label col-md-5"></label>
+            <div class="col-md-4">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AddressLine1" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="AddressLine1" class="form-control" />
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AddressLine2" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="AddressLine2" class="form-control" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ZipCode" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">City</label>
+            <div class="col-md-4">
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Country" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input class="btn btn-success" style="position: absolute; left: 47%; height:40px; width:140px;" type="submit" value="Update Account"/>
+        </div>
+    </form>
+}
+</div>

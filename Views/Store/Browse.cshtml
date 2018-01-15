@@ -1,0 +1,35 @@
+@model Category
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="section-header">
+            <h1>@Model.CategoryName</h1>
+            <h4>@Model.CategoryDescription</h4>
+        </div>
+        <div class="container product-box">
+            @foreach(var product in Model.Products)
+            {
+                <div class="row">
+                    <div class="col-md-2 image">
+                        <a><img class="img-responsive" src="@product.ImgUrl"/></a>
+                    </div>
+                    <div class="col-md-10 text">
+                         @Html.ActionLink(product.ProductName,"Details",new { id=product.ProductId})
+                        <ul>
+                            <li>@product.spec1 | </li>
+                            <li>@product.spec2 | </li>
+                            <li>@product.spec3 | </li>
+                            <li>@product.spec4 | </li>
+                            <li>@product.spec5</li>
+                        </ul>
+                        <p>@product.ProductDescription</p>
+                        <a class="btn btn-default" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@product.ProductId">Add to cart</a>
+                        <h5>$@product.ProductPrice,-</h5>
+                         
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

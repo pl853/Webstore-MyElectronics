@@ -1,0 +1,85 @@
+@model IEnumerable<Webstore_MyElectronics.Models.Product>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h2>Search</h2>
+<h3>
+@Html.ActionLink("Laptops", "Search", new {category = 1}) |
+@Html.ActionLink("Desktops", "Search", new {category = 2}) |
+@Html.ActionLink("Tablets", "Search", new {category = 3}) |
+@Html.ActionLink("Phones", "Search", new {category = 4}) 
+</h3>
+<form asp-action="Search" method="get">
+    <div class="form-action no-color">
+        <p>
+            Name: <input type="text" name="searchString" value="@ViewBag.CurrentFilter"/>
+            <button type="submit" id="searchbtn"> 
+                <span class="glyphicon glyphicon-search"></span>
+            </button> |
+            <!-- <input type="submit" value="Search" class="btn btn-default"/> | -->
+            <a asp-action="Search">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ImgUrl)*@
+            </th>
+            <th>
+                <a asp-action="Search" asp-route-sortOrder="@ViewBag.NameSortParm">@Html.DisplayNameFor(model => model.ProductName)</a>
+            </th>
+            <th>
+                <a asp-action="Search" asp-route-sortOrder="@ViewBag.PriceSortParm">@Html.DisplayNameFor(model => model.ProductPrice)</a>
+            </th>
+            <th>
+                Specs
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.ImgUrl)"
+                    >
+                </td>
+                <td>
+                    @Html.ActionLink(item.ProductName,"Details",new { id=item.ProductId})
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    <ul>
+                        <li>@Html.DisplayFor(modelItem => item.spec1)</li>
+                        <li>@Html.DisplayFor(modelItem => item.spec2)</li>
+                        <li>@Html.DisplayFor(modelItem => item.spec3)</li>
+                        <li>@Html.DisplayFor(modelItem => item.spec4)</li>
+                        <li>@Html.DisplayFor(modelItem => item.spec5)</li>
+                    </ul>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@item.ProductId" id="addcartbtn" >
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+                    @*<a class="btn btn-default" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@item.ProductId">Add to cart</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

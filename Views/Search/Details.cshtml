@@ -1,0 +1,35 @@
+@model Product
+
+<div class="detail-page">
+    <div class="col-md-8">
+        <h1 class="prod-title">@Model.ProductName</h1>
+        <img style="width:400px;"class="img" src="@Model.ImgUrl"/>
+        <div class="col-md-10">
+        <p style="margin-top:30px;">De Acer Aspire ES1-523-81VF is geschikt voor internetten, tekstverwerken en kijken van films op het Full HD scherm. En dankzij het 8 GB werkgeheugen doe je dat tegelijk, zonder dat jouw Acer daar langzamer van wordt. Door het 8 GB werkgeheugen en het anti-reflecterende scherm heeft deze laptop de beste prijs-kwaliteitsverhouding en is het Coolblue's keuze voor een 15 inch basis laptop.</p>
+        </div>
+    </div>
+    <div class="text col-md-4">
+        <ul>
+            <li><h4>@Model.spec1</h4></li>
+            <li><h4>@Model.spec2</h4></li>
+            <li><h4>@Model.spec3</h4></li>
+            <li><h4>@Model.spec4</h4></li>
+            <li><h4>@Model.spec5</h4></li>
+        </ul>
+
+        <h2>€@Model.ProductPrice,00 &nbsp;&nbsp;&nbsp; <a class="" asp-controller="UserWishList" asp-action="AddToSavedProducts" asp-route-id="@User.Identity.Name" asp-route-pid="@Model.ProductId" style="font-size:30px; color:orange; margin-right:30px">
+                <span style="margin-top:20px;"  class="fa fa-star"></span>
+        </a></h2>
+        @if(Model.Stock>0){
+
+        <h5 style="margin-left:30px; font-weight:bold; color:orange;">@Model.Stock products in stock</h5>
+         <a class="buy-btn btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@Model.ProductId" id="addcartbtn" >
+             <span class="glyphicon glyphicon-shopping-cart"></span>
+        </a>
+        }
+        @if(Model.Stock <= 0 )
+        {
+            <h4> Product is out of stock!</h4>
+        }
+    </div>
+</div>

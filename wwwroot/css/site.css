@@ -1,0 +1,234 @@
+﻿body {
+    font-family:"Open Sans",Arial,Helvetica,sans-serif;
+    padding-top: 50px;
+    background-color: #FFFFFF;
+}
+
+
+.page-head{
+    font-weight: bold;
+}
+.main{
+    min-height: 82vh;
+}
+
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar
+{
+     box-shadow: 0 0.5rem 0.6rem rgba(0,0,0,.4);
+    background-color: #5767FF;
+}
+
+.navbar li a:hover{
+    background-color: rgb(71, 83, 194)
+}
+.navbar li a{
+    color: white;
+    font-weight: 400;
+}
+
+.navbar a{
+    color: orange;
+}
+
+
+.nav a{
+    display:block; 
+    color: black;
+    text-decoration: none;
+    padding: 0.8em 1.8em;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 80%;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.nav input{
+    background-color: transparent;
+    border: none;
+    color: #9d9d9d;
+    display:block; 
+    text-decoration: none;
+    padding: 1.5em 1.8em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 80%;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+#searchbtn{
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    color: rgb(60, 129, 175);
+}
+#searchbtn:hover{
+    color: rgb(76, 76, 150);
+}
+
+#addcartbtn{
+    background-color: green;
+}
+#addcartbtn:hover{
+    background-color: darkgreen;
+}
+
+
+/* homepagesection---------------------------------------- */
+
+.content-head{
+    margin-top: 30px;
+}
+
+.i-img{
+    margin-bottom: 30px;
+
+}
+.in-img{
+    width: 100%;
+}
+
+.sale-head{
+    background-color: #5767FF;
+}
+.sec-title{
+
+}
+
+#footer{
+    position: absolute;
+}
+
+#cat-nav .fa{
+    font-size:35px !important;
+}
+
+#cat-nav ul, li{
+    list-style-type: none;
+}
+#cat-nav li{
+    margin-top: 23px;
+
+}
+
+#cat-nav a{
+    font-size: 20px;
+    color: black;
+    font-weight:bold;
+}
+
+
+#cat-nav{
+    border:solid 3px #5767FF;
+    border-top: transparent;
+    padding-bottom: 60px;
+    padding-top: 10px;
+    padding-left: 70px;
+}
+
+.prod{
+    margin-bottom: 50px;
+}
+
+/* cartsection---------------------------------------- */
+.cart-page {
+
+}
+
+.cart-page .fa{
+    font-size: 60px;
+    margin-right:20px;
+    color: orange;
+}
+
+.cart-page .s{
+    font-size: 20px;
+    margin-right:20px;
+    color: orange;
+}
+
+.order-btn{
+    float: right;
+    width: 80px;
+}
+
+
+/* Storesection---------------------------------------- */
+.store-page .fa{
+    font-size: 60px;
+    margin-right:20px;
+    color: orange;
+}
+
+
+
+.product-box{
+    margin-bottom: 30px;
+}
+
+.prevnext{
+    right: 0px;
+    margin-bottom: 30px;
+}
+
+/* Storesection detail---------------------------------------- */
+.img{
+    width: 80%;
+}
+
+.prod-title{
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+
+.detail-page .text{
+    margin-top: 100px;
+}
+
+.detail-page h2{
+    margin-top: 150px;
+    margin-left: 30px;
+}
+
+.detail-page .buy-btn{
+    margin-left:30px;
+    width:200px;
+    margin-top:20px;
+}
+
+
+/* MyAccount Wishlist---------------------------------------- */
+
+.wish-page .fa{
+    font-size: 60px;
+    margin-right:20px;
+    color: orange;
+}
+
+
+/* MyAccount editaccount---------------------------------------- */
+
+.my-page .fa{
+    font-size: 60px;
+    margin-right:20px;
+    color: orange;
+}
+
+.footer{
+    color: white;
+    height: 125px;
+    background-color: #5767FF;
+}
+.footer .fa{
+    font-size: 20px;
+}
+.footer li{
+    margin-top: 10px;
+}

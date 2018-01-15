@@ -1,0 +1,160 @@
+@model PaginatedList<Webstore_MyElectronics.Models.Product>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+
+<div class="store-page">
+    <h2 class="page-head"><i class="fa fa-cog" aria-hidden="true"></i> Web Store</h2>
+    <hr>
+    <div style="left:68%;" class="col-md-12 prevnext">
+    @{
+    var prevDisabled1 = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled1 = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="1"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn @prevDisabled1"
+   style="font-weight:bold;">
+    Back to first page
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn fa fa-arrow-left @prevDisabled1"
+   style="font-size:20px;">
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn fa fa-arrow-right @nextDisabled1"
+   style="font-size:20px;">
+    
+</a>
+</div>
+    <div class="col-md-3">
+        <p>
+            <form asp-controller="Search" asp-action="Category" method="get">
+                <div class="form-action no-color">
+            <input type="text" name="searchString" value="@ViewBag.CurrentFilter"/>
+            <button type="submit" id="searchbtn"> 
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </form>
+            <h4><a asp-controller="Search" asp-action="Index" asp-route-id="@User.Identity.Name">Back To All products</a></h4>
+        </p>
+    </div>
+    <div>
+        <p>
+            Sort By:
+            @if(ViewBag.CurrentSort == "name_desc")
+            {
+                <a asp-controller="Search" asp-action="Category" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-category="@ViewBag.Category" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductName) <i class="glyphicon glyphicon-download"></i> </a>  
+            }else{
+                <a asp-controller="Search" asp-action="Category" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-category="@ViewBag.Category" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductName) <i class="glyphicon glyphicon-upload"></i></a>  
+            } - 
+            @if(ViewBag.CurrentSort != "Price")
+            {
+                <a asp-controller="Search" asp-action="Category" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-category="@ViewBag.Category" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductPrice) <i class="glyphicon glyphicon-upload"></i></a>
+            }else{
+                <a asp-controller="Search" asp-action="Category" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-category="@ViewBag.Category" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductPrice) <i class="glyphicon glyphicon-download"></i></a>
+            }
+        </p>
+    </div>
+        <p>
+            <form asp-route-searchString="@ViewBag.CurrentFilter">
+                Min: &emsp; &emsp; &emsp; Max:<br>
+                <input type="number" name="min" value="Min" style="width:30%;">
+                
+                <input type="number" name="max" value="Max" style="width:30%"><br>
+                <input type="submit" value="Filter Price">
+            </form>
+        </p>
+
+        <ul>
+            <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-laptop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="1">Laptops</a></li>
+                <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="2">Desktops</a></li>
+                <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">Tablets</a></li>
+                <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">Phones</a></li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+         @foreach(var item in Model)
+        {
+            <div class="product-box col-md-4">
+                <img  style="height:130px;"class="product-image" src="@Html.DisplayFor(modelItem => item.ImgUrl)"s>
+                <h4 style="height:60px;"class="product-title">@Html.ActionLink(item.ProductName,"Details",new { id=item.ProductId})</h4>
+                <ul class="product-specs">
+                        <li>@Html.DisplayFor(modelItem => item.spec1)</li>
+                        <li>@Html.DisplayFor(modelItem => item.spec2)</li>
+                        <li>@Html.DisplayFor(modelItem => item.spec3)</li>
+
+                </ul>
+                <p class="product-desc"> This is a example of the product description....@Html.ActionLink("more","Details",new { id=item.ProductId})</p>
+                @if(item.Stock>0)
+                {
+                <div class="col-md-6">
+                 <h4>€@Html.DisplayFor(modelItem => item.ProductPrice)<h4>
+                </div>
+                <div class="col-md-4">
+                <a class="" asp-controller="UserWishList" asp-action="AddToSavedProducts" asp-route-id="@User.Identity.Name" asp-route-pid="@item.ProductId">
+                <span  style="font-size:30px; color:orange; margin-bottom:10px;" class="fa fa-star"></span>
+            </a>
+                </div>
+                <div style=""class="col-md-12">
+                
+                <h5 style="font-weight:bold; margin-left:10px; color:orange;">@Html.DisplayFor(modelItem => item.Stock) products in stock</h5>
+                                    <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@item.ProductId" id="addcartbtn" style="width:150px; margin-bottom:50px;">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+            
+                </div>
+                
+                }
+                @if(item.Stock <= 0){
+                    <h4>Product is out of stock!</h4>
+                }
+            </div>
+        }
+    </div>
+<div style="left:68%;" class="col-md-12 prevnext">
+    @{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="1"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn @prevDisabled1"
+   style="font-weight:bold;">
+    Back to first page
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn fa fa-arrow-left @prevDisabled"
+   style="font-size:20px;">
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn fa fa-arrow-right @nextDisabled"
+   style="font-size:20px;">
+    
+</a>
+</div>
+</div>
+
+
+

@@ -1,0 +1,65 @@
+@model User
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> userManager
+
+
+@{
+    ViewBag.Title = "ManageUsers";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="navbar navbar navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse main-nav">
+                <ul class="nav navbar-nav">
+                    <li><a asp-action="Index">Webshop overview</a></li>
+                    <li><a asp-action="ManageProducts">Manage Products</a></li>
+                    <li><a asp-action="ManageUsers">Manage Users</a></li>
+                    <li><a asp-action="ManageCategories">Manage Product categories</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+    
+    <h1>Manage users</h1>
+    <a asp-controller="Account" asp-action="Register" >Add User</a>
+
+
+    <table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Options</th>
+        <th></th>
+    </tr>
+
+
+    @foreach(var user in Model.Users){
+        <tr>
+            <td>
+                @user.Email
+            </td>
+            <td>
+                @(string.Join(",",await userManager.GetRolesAsync(user)))        
+            </td>
+            <td>
+               <a asp-controller="StoreManager" asp-action="AddUserRole" asp-route-id="@user.Id">Add Role | </a>
+               <a asp-controller="StoreManager" asp-action="DeleteUserRole" asp-route-id="@user.Id">Delete Role |</a>
+               <a asp-controller="StoreManager" asp-action="EditUser" asp-route-id="@user.Id">Edit | </a>
+               <a class="glyphicon glyphicon-remove text-danger remove" asp-controller="StoreManager" asp-action="DeleteUser" asp-route-id="@user.Id"></a>
+            </td>
+        </tr>
+    }
+    </table>   
+
+}

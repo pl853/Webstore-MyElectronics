@@ -1,0 +1,23 @@
+@model Product
+
+
+<div class="row">
+                    <div class="col-md-12 text">
+                        <h2>@Model.ProductName</h2>
+                        <a><img class="img-responsive" src="@Model.ImgUrl"/></a>
+                        
+                        <ul>
+                            <li>@Model.spec1 | </li>
+                            <li>@Model.spec2 | </li>
+                            <li>@Model.spec3 | </li>
+                            <li>@Model.spec4 | </li>
+                            <li>@Model.spec5</li>
+                        </ul>
+                        <p>@Model.ProductDescription</p>
+                        
+                        <h2>$@Model.ProductPrice,-</h2>
+                         
+                    </div>
+                </div>
+
+ <a class="btn btn-default" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@Model.ProductId">Add to cart</a>

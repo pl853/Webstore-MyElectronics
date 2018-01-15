@@ -1,0 +1,84 @@
+@model Order
+
+<div class="row orderForm ">
+
+    <form method="post">
+        <div style="width:90%; margin-bottom:40px;" class="form-horizontal">
+            <h1 style="text-align:center; font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color:orange; font-size:50px;" class="fa fa-envelope" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;Order Information</h1>
+            <h3 class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You are just one step away from ordering your products.</h3>
+            <hr />
+            <div class="form-group"> 
+                <label asp-for="Email" class="control-label col-md-5"></label>
+                <div class="col-md-4">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>     
+            </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label col-md-5"></label>
+            <div class="col-md-4">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AddressLine1" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="AddressLine1" class="form-control" />
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AddressLine2" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="AddressLine2" class="form-control" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ZipCode" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-5 control-label">City</label>
+            <div class="col-md-4">
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Country" class="col-md-5 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input class="btn btn-success" style="position: relative; left: 50%; height:40px; width:140px; margin-bottom:30px;" type="submit" value="Confirm Order"/>
+        </div>
+    </form>
+</div>

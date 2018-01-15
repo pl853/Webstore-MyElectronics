@@ -1,0 +1,20 @@
+@model EditUser
+
+@{
+    ViewBag.Title = "DeleteUser";
+}
+
+
+@using (Html.BeginForm())
+{
+    <h1>Delete</h1>
+    @Html.AntiForgeryToken();
+    <div class="form-horizontal">
+        <h4>Are you sure you want to delete</h4>
+        <hr />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-default"/>
+            <a class="btn btn-default"asp-action="ManageUsers">Back to user list</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,34 @@
+@model Category
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    <h1>Create</h1>
+    @Html.AntiForgeryToken();
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />
+        <div class="form-group"> 
+            <label asp-for="CategoryName" class="control-label col-md-2"></label>
+            <div class="col-md-3">
+                <Input asp-for="CategoryName" class="form-control"/>
+                @Html.ValidationMessageFor(model=>model.CategoryName)
+            </div>     
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryDescription" class="control-label col-md-2"></label>
+            <div class="col-md-3">
+                <textarea asp-for="CategoryDescription" class="form-control"></textarea>
+                @Html.ValidationMessageFor(model=>model.CategoryDescription)
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-default"/>
+            <a class="btn btn-default"asp-action="ManageCategories">Back to categorie list</a>
+        </div>
+    </div>
+}

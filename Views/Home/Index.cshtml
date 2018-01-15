@@ -1,0 +1,143 @@
+﻿@model PaginatedList<Webstore_MyElectronics.Models.Product>
+        @{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+    <div class="col-md-4">
+        <ul id="cat-nav">
+            <li><span class="glyphicon glyphicon-cog"></span><a asp-controller="Search" asp-action="Index"> All products</a></li>
+            <li><ul>
+                <li><span class="fa fa-laptop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="1">&nbsp;&nbsp;&nbsp;Laptops</a></li>
+                <li><span class="fa fa-desktop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="2">&nbsp;&nbsp;&nbsp;Desktops</a></li>
+                <li><span class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablets</a></li>
+                <li><span class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phones</a></li>
+            </ul></li>
+        </ul>
+    </div>
+
+    <div class="i-img col-md-8">          
+        <img class="in-img" src="images/devices.jpg"/>
+    </div>
+
+<div class="sec-title">
+    <h2 style="font-weight:bold; margin-left:60px;">Products On Sale!</h2>
+    <hr>
+</div>
+<div class="col-md-1">
+    <a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn fa fa-arrow-left @prevDisabled"
+   style="padding-top:100px;color:orange; font-size:50px;">
+</a>
+</div>
+<div class="col-md-10">
+@foreach (var product in Model)
+        {
+            @if(Model.Count() == 1)
+            {
+                <div class="col-md-10">
+                <img style="height:140px;" class="prod-img" src="@product.ImgUrl"/>
+            <h4 style="height:50px; width:220px;" class="prod-tit">@Html.ActionLink(product.ProductName,"Details","Search",new { id=product.ProductId})</h4>
+            @if(product.Stock > 0){
+            <h3>from €@product.OldPrice for €@product.ProductPrice</h3>
+            <a class="" asp-controller="UserWishList" asp-action="AddToSavedProducts" asp-route-id="@User.Identity.Name" asp-route-pid="@product.ProductId" style="font-size:30px; color:orange; margin-right:30px">
+                <span class="fa fa-star"></span>
+            </a>
+            <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@product.ProductId" id="addcartbtn" style="width:130px; margin-bottom:15px;" >
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </a>
+            }
+            @if(product.Stock <= 0)
+            {
+                <h4 class="prod-tite">Product is out of stock!</h4>
+            }
+            </div>
+            }
+            @if(Model.Count() == 2)
+            {
+                <div class="col-md-6">
+                <img style="height:140px; " class="prod-img" src="@product.ImgUrl"/>
+            <h4 style="height:50px; width:220px; " class="prod-tit">@Html.ActionLink(product.ProductName,"Details","Search",new { id=product.ProductId})</h4>
+            @if(product.Stock > 0){
+            <h3>from €@product.OldPrice for €@product.ProductPrice</h3>
+            <a class="" asp-controller="UserWishList" asp-action="AddToSavedProducts" asp-route-id="@User.Identity.Name" asp-route-pid="@product.ProductId" style="font-size:30px; color:orange; margin-right:30px">
+                <span class="fa fa-star"></span>
+            </a>
+            <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@product.ProductId" id="addcartbtn" style="width:130px; margin-bottom:15px;" >
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </a>
+            }
+            @if(product.Stock <= 0)
+            {
+                <h4  class="prod-tite">Product is out of stock!</h4>
+            }
+            </div>
+            }
+            @if(Model.Count() == 3)
+            {
+                <div class="col-md-4">
+                 <img style="height:140px; width:220px;"  class="prod-img" src="@product.ImgUrl"/>
+            <h4 style="height:50px;" class="prod-tit">@Html.ActionLink(product.ProductName,"Details","Search",new { id=product.ProductId})</h4>
+            @if(product.Stock > 0){
+            <h3>from €@product.OldPrice for €@product.ProductPrice</h3>
+            <a class="" asp-controller="UserWishList" asp-action="AddToSavedProducts" asp-route-id="@User.Identity.Name" asp-route-pid="@product.ProductId" style="font-size:30px; color:orange; margin-right:30px">
+                <span class="fa fa-star"></span>
+            </a>
+            <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@product.ProductId" id="addcartbtn" style="width:130px; margin-bottom:15px;" >
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </a>
+            }
+            @if(product.Stock <= 0)
+            {
+                <h4  style="margin-bottom:50px;" class="prod-tite">Product is out of stock!</h4>
+            }
+            </div>
+            }
+        }
+</div>
+
+<div class="col-md-1">
+    <a asp-action="Index"
+   asp-route-sortOrder="@ViewBag.CurrentSort"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewBag.CurrentFilter"
+   class="btn fa fa-arrow-right @nextDisabled"
+   style="padding-top:100px;color:orange; font-size:50px;">
+</a>
+</div>
+
+
+    <h2 style="font-weight:bold; margin-top:400px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Top 4 products in store</h2>
+    <hr>
+
+<div class="col-md-12">
+@foreach (var product in ViewBag.products)
+        {
+                <div style="margin-bottom:40px;" class="col-md-3">
+                 <img style="height:140px; width:220px;"  class="prod-img" src="@product.ImgUrl"/>
+            <h4 style="height:50px;" class="prod-tit">@product.ProductName</h4>
+            @if(product.Stock > 0){
+            <h6>Product has been bought @product.TimesBought times</h6>
+            <h3>€@product.ProductPrice</h3>
+            <a class="" asp-controller="UserWishList" asp-action="AddToSavedProducts" asp-route-id="@User.Identity.Name" asp-route-pid="@product.ProductId" style="font-size:30px; color:orange; margin-right:30px">
+                <span class="fa fa-star"></span>
+            </a>
+            <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@product.ProductId" id="addcartbtn" style="width:130px; margin-bottom:15px;" >
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </a>
+            }
+            @if(product.Stock <= 0)
+            {
+                <h4  style="margin-bottom:50px;" class="prod-tite">Product is out of stock!</h4>
+            }
+            </div>
+        }
+</div>
+
+
+<hr> 
+
+
+
