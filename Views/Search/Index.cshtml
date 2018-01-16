@@ -17,6 +17,8 @@
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="1"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn @prevDisabled1"
    style="font-weight:bold;">
     Back to first page
@@ -25,6 +27,8 @@
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-left @prevDisabled1"
    style="font-size:20px;">
 </a>
@@ -32,6 +36,8 @@
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-right @nextDisabled1"
    style="font-size:20px;">
     
@@ -46,10 +52,9 @@
                 <span class="glyphicon glyphicon-search"></span>
             </button>
             </form>
-        
         </p>
     </div>
-            <div>
+    <div>
         <p>
             Sort By:
             @if(ViewBag.CurrentSort == "name_desc")
@@ -69,18 +74,18 @@
         <p>
             <form>
                 Min: &emsp; &emsp; &emsp; Max:<br>
-                <input type="number" name="min" value="Min" style="width:30%;">
+                <input type="number" name="min" value="@ViewBag.Min" style="width:30%;">
                 
-                <input type="number" name="max" value="Max" style="width:30%"><br>
+                <input type="number" name="max" value="@ViewBag.Max" style="width:30%"><br>
                 <input type="submit" value="Filter Price">
             </form>
         </p>
 
         <ul>
             <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-laptop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="1">Laptops</a></li>
-                <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="2">Desktops</a></li>
-                <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">Tablets</a></li>
-                <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">Phones</a></li>
+            <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="2">Desktops</a></li>
+            <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">Tablets</a></li>
+            <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">Phones</a></li>
         </ul>
     </div>
     <div class="col-md-9">
@@ -132,6 +137,8 @@
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="1"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn @prevDisabled1"
    style="font-weight:bold;">
     Back to first page
@@ -140,6 +147,8 @@
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-left @prevDisabled"
    style="font-size:20px;">
 </a>
@@ -147,6 +156,8 @@
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-right @nextDisabled"
    style="font-size:20px;">
     

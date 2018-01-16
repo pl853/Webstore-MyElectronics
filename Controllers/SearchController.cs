@@ -88,7 +88,7 @@ namespace MyElectronics_Webstore.Controllers
                     break;
             }
 
-            int pageSize = 6;
+            int pageSize = 3;
             return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), page ?? 1, pageSize));
             // return View(await products.AsNoTracking().ToListAsync());
         }
@@ -172,7 +172,7 @@ namespace MyElectronics_Webstore.Controllers
                     break;
             }
 
-            int pageSize = 6;
+            int pageSize = 3;
             return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), page ?? 1, pageSize));
             // return View(await products.AsNoTracking().ToListAsync());
         }

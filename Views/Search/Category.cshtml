@@ -15,25 +15,31 @@
     var nextDisabled1 = !Model.HasNextPage ? "disabled" : "";
 }
 
-<a asp-action="Index"
+<a asp-action="Category"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="1"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn @prevDisabled1"
    style="font-weight:bold;">
     Back to first page
 </a>
-<a asp-action="Index"
+<a asp-action="Category"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-left @prevDisabled1"
    style="font-size:20px;">
 </a>
-<a asp-action="Index"
+<a asp-action="Category"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-right @nextDisabled1"
    style="font-size:20px;">
     
@@ -114,7 +120,6 @@
                                     <a class="btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@item.ProductId" id="addcartbtn" style="width:150px; margin-bottom:50px;">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </a>
-            
                 </div>
                 
                 }
@@ -130,28 +135,33 @@
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
-<a asp-action="Index"
+<a asp-action="Category"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="1"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn @prevDisabled1"
    style="font-weight:bold;">
     Back to first page
 </a>
-<a asp-action="Index"
+<a asp-action="Category"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-left @prevDisabled"
    style="font-size:20px;">
 </a>
-<a asp-action="Index"
+<a asp-action="Category"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
+   asp-route-min="@ViewBag.Min"
+   asp-route-min="@ViewBag.Max"
    class="btn fa fa-arrow-right @nextDisabled"
    style="font-size:20px;">
-    
 </a>
 </div>
 </div>
