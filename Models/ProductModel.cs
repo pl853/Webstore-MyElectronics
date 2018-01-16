@@ -25,7 +25,7 @@ namespace Webstore_MyElectronics.Models
         [DisplayName("Price")]
         [Required(ErrorMessage="Product price is required")]
         public decimal ProductPrice{get; set;}
-
+        [Required(ErrorMessage = "old price is required you can set it to null if product is not on sale" )]
         public int OldPrice {get; set;}
 
         [DisplayName("Description")]
@@ -39,7 +39,9 @@ namespace Webstore_MyElectronics.Models
 
         public bool OnSale {get; set;}
 
+        [Required(ErrorMessage = "Stock value is required" )]
         public int Stock {get; set;}
+        
 
         public int TimesBought {get; set;}
 

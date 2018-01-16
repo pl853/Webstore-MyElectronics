@@ -254,10 +254,16 @@ namespace Webstore_MyElectronics.Controllers
         {
             var user = await GetUserById(id);
             var list = _context.UserWishLists.Where(l=>l.User.Id==id);
+            var list1 = _context.Orders.Where(l=>l.User.Id==id);
 
             foreach(var x in list)
             {
                 _context.UserWishLists.Remove(x);
+            }
+
+            foreach(var x in list1)
+            {
+                _context.Orders.Remove(x);
             }
             
             if(ModelState.IsValid)

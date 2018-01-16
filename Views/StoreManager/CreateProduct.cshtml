@@ -12,22 +12,23 @@
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
-        <div class="form-group"> 
-            <label asp-for="CategoryId" class="control-label col-md-2"></label>
+        <p>With a * are required fields</p>
+        <div class="form-group">
+            <label  class="control-label col-md-2">categoryId*</label>
             <div class="col-md-3">
                 <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(@ViewBag.CategoryId,"CategoryId","CategoryName"))"></select>
                 @Html.ValidationMessageFor(model=>model.CategoryId)
             </div>     
         </div>
         <div class="form-group">
-            <label asp-for="ProductName" class="control-label col-md-2"></label>
+            <label  class="control-label col-md-2">ProductName*</label>
             <div class="col-md-3">
                 <input asp-for="ProductName" class="form-control"/>
                 @Html.ValidationMessageFor(model=>model.ProductName)
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ProductPrice" class="control-label col-md-2"></label>
+            <label class="control-label col-md-2">ProductPrice*</label>
             <div class="col-md-3">
                 <input asp-for="ProductPrice" class="form-control"/>
                 @Html.ValidationMessageFor(model=>model.ProductPrice)
@@ -77,13 +78,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Stock" class="control-label col-md-2"></label>
+            <label class="control-label col-md-2">Stock*</label>
             <div class="col-md-3">
                 <input asp-for="Stock" class="form-control"/>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="OldPrice" class="control-label col-md-2"></label>
+            <label class="control-label col-md-2">OldPrice*</label>
             <div class="col-md-3">
                 <input asp-for="OldPrice" class="form-control"/>
             </div>
