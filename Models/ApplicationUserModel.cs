@@ -42,7 +42,7 @@ namespace Webstore_MyElectronics.Models
 
         public bool IsAuthenticated {get; set;}
 
-
+        public string authenticationCode{get; set;}
 
 
     }

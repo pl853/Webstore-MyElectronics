@@ -11,9 +11,10 @@ using Webstore_MyElectronics.Models;
 namespace WebstoreMyElectronics.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180116140730_authnumber")]
+    partial class authnumber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +193,7 @@ namespace WebstoreMyElectronics.Migrations
                         .IsRequired()
                         .HasMaxLength(10);
 
-                    b.Property<string>("authenticationCode");
+                    b.Property<int>("authenticateNumber");
 
                     b.HasKey("Id");
 

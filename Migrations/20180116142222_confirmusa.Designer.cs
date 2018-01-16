@@ -11,9 +11,10 @@ using Webstore_MyElectronics.Models;
 namespace WebstoreMyElectronics.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180116142222_confirmusa")]
+    partial class confirmusa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

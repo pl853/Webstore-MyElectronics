@@ -30,6 +30,10 @@ namespace Webstore_MyElectronics.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            Random authenticationNumer = new Random();
+            authenticationNumer.Next(100000000,999999999);
+
+            System.Console.WriteLine(authenticationNumer);
             return View();
         }  
 
@@ -54,7 +58,7 @@ namespace Webstore_MyElectronics.Controllers
                 }
                 if(ModelState.IsValid && !user.IsAuthenticated)
                 {
-                    return RedirectToAction("authenticate");
+                    return RedirectToAction("Authenticate", "Account", new { id = user.Email });
                 }
 
             }
@@ -70,6 +74,8 @@ namespace Webstore_MyElectronics.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Register register)
         {
+            Random authenticationNumer = new Random();
+            authenticationNumer.Next(100000000,999999999);
             if(ModelState.IsValid)
             {            
                 var user = new ApplicationUser{
@@ -88,13 +94,15 @@ namespace Webstore_MyElectronics.Controllers
 
                 if(result.Succeeded)
                 {
+                    user.IsAuthenticated = false;
+                    user.authenticationCode = user.Id;
                     var message = new MimeMessage();
                     message.From.Add(new MailboxAddress("Test Project", "freddydacruz90@gmail.com"));
                     message.To.Add(new MailboxAddress("Freddy da Cruz", user.Email));
                     message.Subject = "Test email";
                     message.Body = new TextPart("plain")
                     {
-                        Text = "Registration Confirmed your authentication code is abc"
+                        Text = "Registration Confirmed your authentication code is "+ user.authenticationCode
                     };
                     using (var client = new SmtpClient())
                     {
@@ -106,8 +114,7 @@ namespace Webstore_MyElectronics.Controllers
                         client.Disconnect(true);
                     }
 
-                    //await _signInManager.SignInAsync(user,false);
-                    return RedirectToAction("Account","Authenticate");
+                    return RedirectToAction("Authenticate", "Account", new { id = user.Email });
                 }
                 else
                 {
@@ -138,18 +145,26 @@ namespace Webstore_MyElectronics.Controllers
 
         public async Task<IActionResult> Authenticate(Authenticate authenticate,string id)
         {
-            var user = await _userManager.FindByEmailAsync("freddy@hotmail.com");
-            if(authenticate.code == "abc"){
-                user.IsAuthenticated = true;
-                _dbcontext.SaveChanges();
-                await _signInManager.SignInAsync(user,false);
+            var user = await _userManager.FindByEmailAsync(id);
+            if(user!= null)
+            {
+                if(!user.IsAuthenticated)
+                {
+                    if(authenticate.code == user.Id){
+                        user.IsAuthenticated = true;
+                        _dbcontext.SaveChanges();
+                        await _signInManager.SignInAsync(user,false);
+                        return RedirectToAction("Index","Home");
+                    }
+                    if(authenticate.code !="abc")
+                    {
+                        ModelState.AddModelError("","The authentication code is incorrect");
+                    }
+                }
+            }
+            else{
                 return RedirectToAction("Index","Home");
             }
-            if(authenticate.code !="abc")
-            {
-                ModelState.AddModelError("","The authentication code is incorrect");
-            }
-
             return View();
         }
     }
