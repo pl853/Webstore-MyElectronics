@@ -40,6 +40,8 @@ namespace Webstore_MyElectronics.Models
         [StringLength(50)]
         public string Country { get; set; }
 
+        public bool IsAuthenticated {get; set;}
+
 
 
 

@@ -1,0 +1,22 @@
+@model Authenticate
+
+@using (Html.BeginForm())
+{
+<form method="post" asp-controller="Account" asp-action="Register">
+        <div style="width:90%; margin-top:100px;" class="form-horizontal">
+            <h3 style="text-align:center; font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color:orange; font-size:50px;" class="fa fa-user" aria-hidden="true"></i> &nbsp;Please fill in the authentication code you recieved in your email</h3>
+            <hr />
+            
+           <div style="margin-left:39%;" asp-validation-summary="All"></div>
+            <div class="form-group"> 
+                <label class="control-label col-md-5"></label>
+                <div class="col-md-3">
+                    <Input asp-for="code" class="form-control"/>
+                </div>     
+            </div>
+        <input class="btn btn-success" style="position: absolute; left: 44.5%; height:40px; width:140px;" type="submit" value="Confirm"/>
+        <h5  style="position: absolute; left: 41%; margin-top:70px;">Don't have an account yet? <a asp-action="Register"> Register</a> Here! </h5>
+        </div>
+    </form>
+
+}

@@ -18,11 +18,13 @@ namespace Webstore_MyElectronics.Controllers
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly DatabaseContext _dbcontext;
 
-        public  AccountController (UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser>signInManager)
+        public  AccountController (UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser>signInManager,DatabaseContext dbcontext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _dbcontext = dbcontext;
         }
 
         [HttpGet]
@@ -34,14 +36,27 @@ namespace Webstore_MyElectronics.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Login login)
         {
-            if(ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(login.Email);
+
+            if(ModelState.IsValid && user ==null)
             {
-                var result = await _signInManager.PasswordSignInAsync(login.Email,login.Password,login.RememberMe,false);
-                if(result.Succeeded)
-                {
-                    return RedirectToAction("Index","Home");
-                }
                 ModelState.AddModelError("","Email and password do not match.");
+            }
+            else{
+                if(ModelState.IsValid && user.IsAuthenticated)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(login.Email,login.Password,login.RememberMe,false);
+                    if(result.Succeeded)
+                    {
+                        return RedirectToAction("Index","Home");
+                    }
+                    ModelState.AddModelError("","Email and password do not match.");
+                }
+                if(ModelState.IsValid && !user.IsAuthenticated)
+                {
+                    return RedirectToAction("authenticate");
+                }
+
             }
             return View(login);
         }  
@@ -79,7 +94,7 @@ namespace Webstore_MyElectronics.Controllers
                     message.Subject = "Test email";
                     message.Body = new TextPart("plain")
                     {
-                        Text = "Registration Confirmed"
+                        Text = "Registration Confirmed your authentication code is abc"
                     };
                     using (var client = new SmtpClient())
                     {
@@ -91,8 +106,8 @@ namespace Webstore_MyElectronics.Controllers
                         client.Disconnect(true);
                     }
 
-                    await _signInManager.SignInAsync(user,false);
-                    return RedirectToAction("Index","Home");
+                    //await _signInManager.SignInAsync(user,false);
+                    return RedirectToAction("Account","Authenticate");
                 }
                 else
                 {
@@ -117,6 +132,24 @@ namespace Webstore_MyElectronics.Controllers
 
         public IActionResult AccessDenied()
         {
+            return View();
+        }
+
+
+        public async Task<IActionResult> Authenticate(Authenticate authenticate,string id)
+        {
+            var user = await _userManager.FindByEmailAsync("freddy@hotmail.com");
+            if(authenticate.code == "abc"){
+                user.IsAuthenticated = true;
+                _dbcontext.SaveChanges();
+                await _signInManager.SignInAsync(user,false);
+                return RedirectToAction("Index","Home");
+            }
+            if(authenticate.code !="abc")
+            {
+                ModelState.AddModelError("","The authentication code is incorrect");
+            }
+
             return View();
         }
     }
