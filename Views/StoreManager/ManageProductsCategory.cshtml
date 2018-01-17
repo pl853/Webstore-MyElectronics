@@ -2,7 +2,7 @@
     
 
 @{
-    ViewBag.Title = "ManageProducts";
+    ViewBag.Title = "ManageProductsCategory";
 }
 
 
@@ -44,7 +44,7 @@
                 <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Storemanager" asp-action="ManageProductsCategory" asp-route-category="3" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Tablets</a></li>
                 <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="StoreManager" asp-action="ManageProductsCategory" asp-route-category="4" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Phones</a></li>
             </ul>
-            <form asp-action="ManageProducts">
+            <form asp-action="ManageProductsCategory" >
                 stock: <input type="checkbox" name="stock" value="true">
                 onsale: <input type="checkbox" name="onsale" value="true">
                 <input class="button" type="submit" value="Sort">
@@ -107,21 +107,23 @@
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
-<a asp-action="ManageProducts"
+<a asp-action="ManageProductsCategory"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-onsale="@ViewBag.OnSale"
    asp-route-stock="@ViewBag.Stock"
+   asp-route-category="@ViewBag.Category"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
-<a asp-action="ManageProducts"
+<a asp-action="ManageProductsCategory"
    asp-route-sortOrder="@ViewBag.CurrentSort"
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-onsale="@ViewBag.OnSale"
    asp-route-stock="@ViewBag.Stock"
+   asp-route-category="@ViewBag.Category"
    class="btn btn-default @nextDisabled">
     Next
 </a>

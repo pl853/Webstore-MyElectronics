@@ -23,9 +23,46 @@ namespace Webstore_MyElectronics.Controllers
             var products = from s in _context.Products select s;
             products = products.Where(s => s.OnSale == true);
 
+           List<Product> toremove = new List<Product>();
+            List<Product> toremove1 = new List<Product>();
+
             ViewBag.products = _context.Products.OrderByDescending(x=>x.TimesBought).Take(4);
 
+
+            var allprods = _context.Products;
+
+            // foreach (var item in allprods)
+            // {
+            //     var to = _context.Products.First(x=>x.ProductName == item.ProductName);
+            //     if(toremove.Contains(to))
+            //     {
+            //        System.Console.WriteLine("na");
+            //     }
+            //     else{
+            //         toremove.Add(to);
+            //     }
+
+
+            // }
+
+            // foreach(var i in allprods)
+            // {
+            //     _context.Remove(i);
+            // }
             
+            // _context.SaveChanges();
+
+            // System.Console.WriteLine(allprods.Count());
+            // System.Console.WriteLine(toremove.Count());
+            
+            // foreach (var item in toremove)
+            // {
+            //     _context.Products.Add(item);
+            // }
+    
+
+
+            // _context.SaveChanges();
             int pageSize = 3;
             return View(await PaginatedList<Product>.CreateAsync(products, page ?? 1, pageSize));
         }

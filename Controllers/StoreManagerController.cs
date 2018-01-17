@@ -32,7 +32,7 @@ namespace Webstore_MyElectronics.Controllers
         }
         public ActionResult  Index()
         {
-                
+  
             var montjan=CreateMonthlyRevenue("jan");
             var montfeb=CreateMonthlyRevenue("feb");
             var montmar=CreateMonthlyRevenue("mar");
@@ -49,18 +49,32 @@ namespace Webstore_MyElectronics.Controllers
             
 
             List<DataPoint> AmountProductsPerCat = new List<DataPoint>{
-                new DataPoint("jan",montjan),
-                new DataPoint("feb",montfeb),
-                new DataPoint("mar",montmar),
-                new DataPoint("apr",montapr),
-                new DataPoint("may",montmay),
-                new DataPoint("jun",montjun),
-                new DataPoint("jul",montjul),
-                new DataPoint("aug",montaug),
-                new DataPoint("sep",montsep),
-                new DataPoint("okt",montokt),
-                new DataPoint("nov",montnov),
-                new DataPoint("dec",montdec)
+                // new DataPoint("feb",montfeb),
+                // new DataPoint("mar",montmar),
+                // new DataPoint("apr",montapr),
+                // new DataPoint("may",montmay),
+                // new DataPoint("jun",montjun),
+                // new DataPoint("jul",montjul),
+                // new DataPoint("aug",montaug),
+                // new DataPoint("sep",montsep),
+                // new DataPoint("okt",montokt),
+                // new DataPoint("nov",montnov),
+                // new DataPoint("dec",montdec),
+                // new DataPoint("jan",montjan)
+
+                new DataPoint("feb",10000),
+                new DataPoint("mar",12500),
+                new DataPoint("apr",13000),
+                new DataPoint("may",19000),
+                new DataPoint("jun",22000),
+                new DataPoint("jul",20000),
+                new DataPoint("aug",24000),
+                new DataPoint("sep",30000),
+                new DataPoint("okt",29000),
+                new DataPoint("nov",33000),
+                new DataPoint("dec",32000),
+                new DataPoint("jan",montjan)
+
             };
 
 
@@ -114,7 +128,7 @@ namespace Webstore_MyElectronics.Controllers
             return(thisMonthTotalRevenue);
         }
 
-        public async Task<ActionResult>  ManageProducts(string searchString, string sortOrder, int? category, string currentFilter, int? page)
+        public async Task<ActionResult>  ManageProducts(string searchString, string sortOrder, int? category, string currentFilter, int? page, bool stock = false, bool onsale= false)
         {
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
 
@@ -143,7 +157,25 @@ namespace Webstore_MyElectronics.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
+            ViewBag.Stock = stock;
+            ViewBag.OnSale = onsale;
+
             var products = from s in _context.Products select s;
+
+            if(stock == false && onsale == false){
+                products = from s in _context.Products select s;
+            }else{
+                if(stock== true && onsale == false)
+                {
+                    products = products.Where(p => p.Stock <= 5);
+                }
+                else if(onsale == true && stock == false ){
+                    products = products.Where(p => p.OnSale == true);
+                }
+                else{
+                    products = products.Where(p => p.OnSale == true && p.Stock <= 5);
+                }
+            }
             
             if(!String.IsNullOrEmpty(searchString)){
                     products = products.Where(s => s.ProductName.ToLower().Contains(searchString.ToLower())
@@ -158,6 +190,72 @@ namespace Webstore_MyElectronics.Controllers
             
 
         }
+
+                public async Task<ActionResult>  ManageProductsCategory(string searchString, string sortOrder, int? category, string currentFilter, int? page, bool stock = false, bool onsale= false)
+        {
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+
+            ViewBag.Category = category;
+
+            if(searchString != null){
+                page = 1;
+            }else{
+                searchString = currentFilter;
+            }
+
+            switch(category){
+                case 1:
+                    ViewBag.CategoryName ="Laptops";
+                    break;
+                case 2:
+                    ViewBag.CategoryName ="Desktops";
+                    break;
+                case 3:
+                    ViewBag.CategoryName ="Tablets";
+                    break;
+                case 4:
+                    ViewBag.CategoryName ="Phones";
+                    break;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            ViewBag.Stock = stock;
+            ViewBag.OnSale = onsale;
+
+            var products = from s in _context.Products select s;
+
+            if(stock == false && onsale == false){
+                products = products.Where(p => p.CategoryId == category);
+            }else{
+                if(stock== true && onsale == false)
+                {
+                    products = products.Where(p => p.Stock <= 5 && p.CategoryId == category).OrderBy(p => p.Stock);
+                    
+                }
+                else if(onsale == true && stock == false ){
+                    products = products.Where(p => p.OnSale == true && p.CategoryId == category);
+                }
+                else{
+                    products = products.Where(p => p.OnSale == true && p.Stock <= 5 && p.CategoryId == category).OrderBy(p => p.Stock);
+                    
+                }
+            }
+            
+            if(!String.IsNullOrEmpty(searchString)){
+                    products = products.Where(s => s.ProductName.ToLower().Contains(searchString.ToLower())
+                    || s.ProductDescription.ToLower().Contains(searchString.ToLower())
+                    && s.CategoryId == category
+                    );
+            }
+
+
+            int pageSize = 15;
+            return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), page ?? 1, pageSize));
+            
+
+        }
+
         public ActionResult  ManageCategories()
         {
             var categories = _context.Categories.ToList();

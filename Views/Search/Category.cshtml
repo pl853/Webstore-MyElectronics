@@ -46,21 +46,21 @@
 </a>
 </div>
     <div class="col-md-3">
-        -------------------------------------
+        <hr>
         <div class="search-box">
             <br>
             <form asp-controller="Search" asp-action="Category" method="get">
                 <input type="search" placeholder="Search" name="searchString" value="@ViewBag.CurrentFilter" asp-route-category="@ViewBag.Category">
             </form>
         </div>
-        -------------------------------------
+        <hr>
         <ul>
             <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-laptop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="1">Laptops</a></li>
             <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="2">Desktops</a></li>
             <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">Tablets</a></li>
             <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">Phones</a></li>
         </ul>
-        -------------------------------------
+        <hr>
         <div>
             <form asp-route-action="Category" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max" asp-route-category="@ViewBag.Category">
                 <div class="searchnumber">
@@ -85,7 +85,7 @@
                 <a class="button" asp-controller="Search" asp-action="Category" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max" asp-route-category="@ViewBag.Category">@Html.DisplayNameFor(model => model[0].ProductPrice)</a>
             }
         </p>
-        -------------------------------------
+        
 </div>
     <div class="col-md-9">
          @foreach(var item in Model)
