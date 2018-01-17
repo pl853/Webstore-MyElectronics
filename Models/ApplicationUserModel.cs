@@ -10,7 +10,7 @@ namespace Webstore_MyElectronics.Models
 {
     public class ApplicationUser:IdentityUser
     {        
-       [Required(ErrorMessage = "Please enter your first name")]
+        [Required(ErrorMessage = "Please enter your first name")]
         [Display(Name = "First name")]
         [StringLength(50)]
         public string FirstName { get; set; }
@@ -43,8 +43,5 @@ namespace Webstore_MyElectronics.Models
         public bool IsAuthenticated {get; set;}
 
         public string authenticationCode{get; set;}
-
-
     }
-
 }

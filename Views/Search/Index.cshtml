@@ -18,7 +18,7 @@
    asp-route-page="1"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-min="@ViewBag.Min"
-   asp-route-min="@ViewBag.Max"
+   asp-route-max="@ViewBag.Max"
    class="btn @prevDisabled1"
    style="font-weight:bold;">
     Back to first page
@@ -28,7 +28,7 @@
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-min="@ViewBag.Min"
-   asp-route-min="@ViewBag.Max"
+   asp-route-max="@ViewBag.Max"
    class="btn fa fa-arrow-left @prevDisabled1"
    style="font-size:20px;">
 </a>
@@ -37,56 +37,53 @@
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-min="@ViewBag.Min"
-   asp-route-min="@ViewBag.Max"
+   asp-route-max="@ViewBag.Max"
    class="btn fa fa-arrow-right @nextDisabled1"
    style="font-size:20px;">
     
 </a>
 </div>
     <div class="col-md-3">
-        <p>
+        -------------------------------------
+        <div class="search-box">
+            <br>
             <form asp-controller="Search" asp-action="Index" method="get">
-                <div class="form-action no-color">
-            <input type="text" name="searchString" value="@ViewBag.CurrentFilter"/>
-            <button type="submit" id="searchbtn"> 
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
+                <input type="search" placeholder="Search" name="searchString" value="@ViewBag.CurrentFilter">
             </form>
-        </p>
-    </div>
-    <div>
-        <p>
-            Sort By:
-            @if(ViewBag.CurrentSort == "name_desc")
-            {
-                <a asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductName) <i class="glyphicon glyphicon-download"></i> </a>  
-            }else{
-                <a asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductName) <i class="glyphicon glyphicon-upload"></i></a>  
-            } - 
-            @if(ViewBag.CurrentSort != "Price")
-            {
-                <a asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductPrice) <i class="glyphicon glyphicon-upload"></i></a>
-            }else{
-                <a asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductPrice) <i class="glyphicon glyphicon-download"></i></a>
-            }
-        </p>
-    </div>
-        <p>
-            <form>
-                Min: &emsp; &emsp; &emsp; Max:<br>
-                <input type="number" name="min" value="@ViewBag.Min" style="width:30%;">
-                
-                <input type="number" name="max" value="@ViewBag.Max" style="width:30%"><br>
-                <input type="submit" value="Filter Price">
-            </form>
-        </p>
-
+        </div>
+        -------------------------------------
         <ul>
             <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-laptop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="1">Laptops</a></li>
             <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="Search" asp-action="Category" asp-route-category="2">Desktops</a></li>
             <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Search" asp-action="Category" asp-route-category="3">Tablets</a></li>
             <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="Search" asp-action="Category" asp-route-category="4">Phones</a></li>
         </ul>
+        -------------------------------------
+        <div>
+            <form asp-route-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">
+                <div class="searchnumber">
+                    <input type="number" name="min" value="@ViewBag.Min"  placeholder="minimum price">  
+                </div>
+                <div class="searchnumber">
+                    <input type="number" name="max" value="@ViewBag.Max"  placeholder="maximum price"><br>
+                </div>
+                <button class="no-button" type="submit"></button>
+            </form>
+        </div>
+        <p>
+
+            @if(ViewBag.CurrentSort == "Price" | ViewBag.CurrentSort == "price_desc")
+            {
+                <a class="button" asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max" >@Html.DisplayNameFor(model => model[0].ProductName)</a>  
+
+                <a class="button" asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max" style="border-color:rgb(74, 76, 102);">@Html.DisplayNameFor(model => model[0].ProductPrice)</a>
+            }else{
+                <a class="button" asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max" style="border-color:rgb(74, 76, 102)">@Html.DisplayNameFor(model => model[0].ProductName)</a>  
+
+                <a class="button" asp-controller="Search" asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-searchString="@ViewBag.CurrentFilter" asp-route-min="@ViewBag.Min" asp-route-max="@ViewBag.Max">@Html.DisplayNameFor(model => model[0].ProductPrice)</a>
+            }
+        </p>
+        -------------------------------------
     </div>
     <div class="col-md-9">
          @foreach(var item in Model)
@@ -138,7 +135,7 @@
    asp-route-page="1"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-min="@ViewBag.Min"
-   asp-route-min="@ViewBag.Max"
+   asp-route-max="@ViewBag.Max"
    class="btn @prevDisabled1"
    style="font-weight:bold;">
     Back to first page
@@ -148,7 +145,7 @@
    asp-route-page="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-min="@ViewBag.Min"
-   asp-route-min="@ViewBag.Max"
+   asp-route-max="@ViewBag.Max"
    class="btn fa fa-arrow-left @prevDisabled"
    style="font-size:20px;">
 </a>
@@ -157,7 +154,7 @@
    asp-route-page="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewBag.CurrentFilter"
    asp-route-min="@ViewBag.Min"
-   asp-route-min="@ViewBag.Max"
+   asp-route-max="@ViewBag.Max"
    class="btn fa fa-arrow-right @nextDisabled"
    style="font-size:20px;">
     

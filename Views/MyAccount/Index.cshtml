@@ -77,6 +77,10 @@
     </table>  
     @if(@Model.Count()>0)
     {
+         <a style="margin-left:87%;" class="buy-btn btn btn-info btn-lg" asp-controller="ShoppingCart" asp-action="AddToAllShoppingCart"  asp-route-id="@User.Identity.Name" id="addcartbtn" >
+             <span class="glyphicon glyphicon-shopping-cart"></span>
+             Add to cart
+        </a>
        <div style="margin-bottom:30px;" class="prevnext">
     @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";

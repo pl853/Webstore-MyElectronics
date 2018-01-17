@@ -232,3 +232,177 @@
 .footer li{
     margin-top: 10px;
 }
+
+
+/* geen arrow in input number*/
+input[type=number] { 
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    margin: 0; 
+}
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+}
+
+
+/* search box */
+input {
+	outline: none;
+}
+input[type=search] {
+    box-sizing: content-box; /*extra toegevoegd*/
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+    font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+input[type=search] {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 10px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #5767FF;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+.search-box{
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+
+/* search price */
+input[type=number] {
+    box-sizing: content-box; /*extra toegevoegd*/
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+input[type=number] {
+	background: #ededed url(http://pngimg.com/uploads/euro_sign/euro_sign_PNG7.png) no-repeat 12px center;
+    background-size: 10px;
+    border: solid 1px #ccc;
+	padding: 10px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=number]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #5767FF;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+.searchnumber{
+    padding-top: 7px;
+    margin-bottom: 10px;
+}
+
+
+
+/* sort buttons */
+a.button{
+    float: left;
+    background: #ECECEC;
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: block;
+    font-family: arial;
+    font-weight: bold;
+    color:#7f7f7f;
+    text-decoration: none;
+    text-shadow:0px 1px 0px #fff;
+    border:1px solid #a7a7a7;
+    width: 80px;
+    margin:0px auto;
+    margin-top:4px;
+    margin-bottom: 4px;
+    margin-right: 8px;
+    margin-left: 2px;
+    box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+    transition: 0ms;
+    -webkit-transition:box-shadow 0.5s;
+}
+a.button i{
+    float: right;
+    margin-top: 2px;
+}
+a.button:hover{
+    box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+}
+a.button:active{
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
+    background:-webkit-linear-gradient(top, #d1d1d1 0%,#ECECEC 100%);
+}
+
+.button:after{
+    font-family: 'Glyphicons Halflings';
+    content: '\e119';
+    padding-left: 5px;
+    position: relative;
+    top: 1px;
+    font-size: 90%;
+}
+.btn-upload:after{
+    font-family: 'Glyphicons Halflings';
+    content: '\e119;';
+    padding-left: 5px;
+    position: relative;
+    top: 1px;
+    font-size: 90%;
+}
+
+
+/* onzichtbare button voor submit*/
+.no-button{
+    border: none;
+    padding: none;
+    outline: none;
+    margin: none;
+    border-radius: -10px;
+    position: absolute;
+}
+
+ input[type=number] .input-test{
+    background: #ededed url(https://thumb10.shutterstock.com/display_pic_with_logo/3821945/431066653/stock-vector-vector-clipboard-with-check-list-on-transparent-background-431066653.jpg) no-repeat 12px center;
+}

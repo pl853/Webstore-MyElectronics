@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 
-
 namespace Webstore_MyElectronics
 {
     public class Startup
@@ -45,7 +44,6 @@ namespace Webstore_MyElectronics
                 options.SlidingExpiration = true;
             });
             
-
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -58,8 +56,7 @@ namespace Webstore_MyElectronics
             services.AddScoped(sp => ShoppingCart.GetCart(sp));
             services.AddMvc();
             services.AddMemoryCache();
-            services.AddSession();
-            
+            services.AddSession();    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,7 +75,6 @@ namespace Webstore_MyElectronics
             app.UseStaticFiles();
             app.UseSession();
 
-    
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -100,8 +96,6 @@ namespace Webstore_MyElectronics
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-
         }
     }
 }

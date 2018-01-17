@@ -90,3 +90,14 @@ C:\Users\fredd\Downloads\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\W
 C:\Users\fredd\Downloads\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
 C:\Users\fredd\Downloads\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
 C:\Users\fredd\Downloads\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\bin\Debug\netcoreapp2.0\Webstore MyElectronics.deps.json
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.json
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\bin\Debug\netcoreapp2.0\Webstore MyElectronics.runtimeconfig.dev.json
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\bin\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\bin\Debug\netcoreapp2.0\Webstore MyElectronics.pdb
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csprojResolveAssemblyReference.cache
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.csproj.CoreCompileInputs.cache
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfoInputs.cache
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.AssemblyInfo.cs
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.dll
+C:\Users\hp-spectrex360\Desktop\Webstore-MyElectronics-master\obj\Debug\netcoreapp2.0\Webstore MyElectronics.pdb

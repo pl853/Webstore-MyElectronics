@@ -2,11 +2,16 @@
 
 <div class="cart-page">
     <h2 class="page-head"><i class="fa fa-shopping-cart"></i> My Shoppingcart</h2>
+    @if(Model.ShoppingCartTotal!=0){
+                <a style="margin-left:91%;" class="buy-btn btn  btn-danger" asp-controller="ShoppingCart" asp-action="RemoveAllFromShoppingCart" >
+             <span class="glyphicon glyphicon-shopping-cart"></span>
+             Clear cart
+        </a>
+        }
     <hr>
 
     @if(Model.ShoppingCartTotal!=0)
     {
-
     <table class="table table-striped">
         <thead>
             <tr>
@@ -19,6 +24,7 @@
             </tr>
         </thead>
         <tbody>
+            
             @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
             {
                 <tr>
@@ -53,11 +59,12 @@
     </table>
     @if(User.Identity.IsAuthenticated)
     {
-        <a class="order-btn btn btn-success"asp-controller="Order" asp-action="Checkout" asp-route-id="@User.Identity.Name">Order</a>
+        <a style="margin-bottom:30px; width:120px;" class="order-btn btn btn-success"asp-controller="Order" asp-action="Checkout" asp-route-id="@User.Identity.Name"><span style="font-size:20px;" class="fa fa-envelope"></span>Order</a>
     }
+
     @if(!User.Identity.IsAuthenticated)
     {
-        <a class="order-btn btn btn-success"asp-controller="Order" asp-action="unCheckout">Order</a>
+        <a style="margin-bottom:30px; width:120px;" class="order-btn btn btn-success"asp-controller="Order" asp-action="unCheckout"><span style="font-size:20px;" class="fa fa-envelope"></span>Order</a>
     }
         
     }

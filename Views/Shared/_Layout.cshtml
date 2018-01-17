@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         
     </environment>
     <environment exclude="Development">
@@ -54,7 +55,7 @@
                     @if(User.Identity.IsAuthenticated)
                     {
                         <li><a>Welcome @User.Identity.Name</a></li>
-                        <li><form method = "post" asp-controller = "Account" asp-action = "Logout"><input type = "submit" value = "Logout"/></form></li>
+                        <li style="color:white"><form method = "post" asp-controller = "Account" asp-action = "Logout"><input style="color:white" type = "submit" value = "Logout"/></form></li>
                     }
                     else
                     {
@@ -72,7 +73,7 @@
             <div class="col-md-8">
                 <h3 style="color:orange;">&copy; MyElectronics webstore</h3>
                 <hr>
-                <h4>Pieter Lems, Suraj doekoewattes,Freddy lacruz,Jawed balgie</h4>
+                <h4>Pieter Lems, Suraj Doekharan, Freddy da Cruz, Jawed balKhi</h4>
             </div>
             <div class="col-md-4">
                 <ul>

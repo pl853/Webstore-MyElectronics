@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using MailKit;
 using MimeKit;
 using MailKit.Net.Smtp;
+using Microsoft.EntityFrameworkCore;
 
 namespace Webstore_MyElectronics.Controllers
 {
@@ -59,6 +60,34 @@ namespace Webstore_MyElectronics.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<RedirectToActionResult> AddToAllShoppingCart(int productId,string id)
+        {
+            var user = await _userManager.FindByEmailAsync(id);
+            var selecteditems = _context.UserWishLists.Where(i=>i.User.Email == user.UserName).Include(i=>i.product);
+            var wishlistItems = _context.UserWishLists.Where(i=>i.User.Email == user.UserName);
+
+            if(selecteditems != null)
+            {
+                foreach(var i in selecteditems)
+                {
+                    var product = _context.Products.FirstOrDefault(p=> p.ProductId == i.product.ProductId);
+                    product.Stock -= 1;
+                    _shoppingCart.AddToCart(product,1);
+                }
+            }
+
+            foreach(var x in wishlistItems){
+                _context.UserWishLists.Remove(x);
+            }
+
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
+
         public RedirectToActionResult IncrementProduct(int productId)
         {
             var selectedProduct = _context.Products.FirstOrDefault(p=> p.ProductId == productId);
@@ -91,16 +120,18 @@ namespace Webstore_MyElectronics.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveAllFromShoppingCart(int productId)
+        public RedirectToActionResult RemoveAllFromShoppingCart()
         {   var items = _shoppingCart.GetShoppingCartItems();
+
             foreach (var item in items)
             {
-                var selectedProduct = _context.Products.FirstOrDefault(p=> p.ProductId == productId);
-                if(selectedProduct != null)
-                {
-                selectedProduct.Stock += 1;
+                var amount = item.Amount;
+                var selectedProduct = _context.Products.FirstOrDefault(p=> p.ProductId == item.Product.ProductId);
+                selectedProduct.Stock += 1 * amount;
                 _context.SaveChanges();
-                _shoppingCart.RemoveFromCart(selectedProduct);
+                for (int i = amount; i >= 0 ; i--)
+                {
+                    _shoppingCart.RemoveFromCart(selectedProduct);
                 }
             }
 
