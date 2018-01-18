@@ -33,17 +33,23 @@
 
     <div class="col-md-3">
     <div class="search-box">
-            <br>
-            <form asp-controller="Search" asp-action="Index" method="get">
+            <hr>
+            <form asp-controller="Search" asp-action="Index" method="get" style="margin-bottom:7px;">
                 <input type="search" placeholder="Search" name="searchString" value="@ViewBag.CurrentFilter">
             </form>
+            <br>
+            <a class="button2" asp-action="ManageProducts" style="width:110px;">All Products</a>
+            <br>
+            <br>
         </div>
+        <hr>
             <ul>
                 <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-laptop"></span><a asp-controller="StoreManager" asp-action="ManageProductsCategory" asp-route-category="1" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Laptops</a></li>
                 <li><span  style="font-size:30px; width:40px; margin-top:15px;" class="fa fa-desktop"></span><a asp-controller="StoreManager" asp-action="ManageProductsCategory" asp-route-category="4" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Desktops</a></li>
-                <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Storemanager" asp-action="ManageProductsCategory" asp-route-category="3" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Tablets</a></li>
-                <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="StoreManager" asp-action="ManageProductsCategory" asp-route-category="4" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Phones</a></li>
+                <li><span  style="font-size:40px; width:40px;  margin-top:15px;" class="fa fa-tablet"></span><a asp-controller="Storemanager" asp-action="ManageProductsCategory" asp-route-category="5" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Tablets</a></li>
+                <li><span  style="font-size:40px; width:40px; margin-top:15px;" class="fa fa-mobile"></span><a asp-controller="StoreManager" asp-action="ManageProductsCategory" asp-route-category="6" asp-route-onsale="@ViewBag.OnSale" asp-route-stock="@ViewBag.Stock">Phones</a></li>
             </ul>
+            <hr>
             <form asp-action="ManageProductsCategory" >
                 stock: <input type="checkbox" name="stock" value="true">
                 onsale: <input type="checkbox" name="onsale" value="true">

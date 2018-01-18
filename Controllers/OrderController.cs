@@ -209,8 +209,8 @@ namespace Webstore_MyElectronics.Controllers
 
             
             var message = new MimeMessage();
-                    message.From.Add(new MailboxAddress("Order Confirmed", "freddydacruz90@gmail.com"));
-                    message.To.Add(new MailboxAddress("Order Email", email));
+                    message.From.Add(new MailboxAddress("MyElectronics", "freddydacruz90@gmail.com"));
+                    message.To.Add(new MailboxAddress("Order confirmed", email));
                     message.Subject = "Order Confirmed";
                     message.Body = new TextPart("plain")
                     {

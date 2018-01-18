@@ -47,9 +47,12 @@
         <hr>
         <div class="search-box">
             <br>
-            <form asp-controller="Search" asp-action="Index" method="get">
+            <form asp-controller="Search" asp-action="Index" method="get" style="margin-bottom:7px;">
                 <input type="search" placeholder="Search" name="searchString" value="@ViewBag.CurrentFilter">
             </form>
+            <a class="button2" asp-action="Index" style="width:110px;">All Products</a>
+            <br>
+            <br>
         </div>
         <hr>
         <ul>

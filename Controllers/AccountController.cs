@@ -97,9 +97,9 @@ namespace Webstore_MyElectronics.Controllers
                     user.IsAuthenticated = false;
                     user.authenticationCode = user.Id;
                     var message = new MimeMessage();
-                    message.From.Add(new MailboxAddress("Test Project", "freddydacruz90@gmail.com"));
+                    message.From.Add(new MailboxAddress("MyElectronics", "freddydacruz90@gmail.com"));
                     message.To.Add(new MailboxAddress("Freddy da Cruz", user.Email));
-                    message.Subject = "Test email";
+                    message.Subject = "Registratins mail";
                     message.Body = new TextPart("plain")
                     {
                         Text = "Registration Confirmed your authentication code is "+ user.authenticationCode
