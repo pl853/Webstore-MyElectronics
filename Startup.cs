@@ -26,9 +26,9 @@ namespace Webstore_MyElectronics
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DatabaseContext> (
-            //      opt => opt.UseNpgsql(@"Host=LocalHost;Database=MyElectronicsDB;Username=postgres;Password=lerzem12"));
+            //      opt => opt.UseNpgsql(@"Host=LocalHost;Database=MyElectronicsDB;Username=postgres;Password={Yourpassword}"));
             // services.AddDbContext<DatabaseContext> (
-                 opt => opt.UseNpgsql(@"Host=LocalHost;Database=MyElectronicsDB;Username=postgres;Password=lerzem12"));
+                 opt => opt.UseNpgsql(@"Host=LocalHost;Database=MyElectronicsDB;Username=postgres;Password={Yourpassword}"));
             services.AddIdentity<ApplicationUser,IdentityRole>()
                 .AddEntityFrameworkStores<DatabaseContext>()
                 .AddDefaultTokenProviders();
