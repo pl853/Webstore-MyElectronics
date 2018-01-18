@@ -28,6 +28,26 @@ namespace Webstore_MyElectronics.Controllers
 
             ViewBag.products = _context.Products.OrderByDescending(x=>x.TimesBought).Take(4);
 
+            Product p2 = new Product{
+                CategoryId = 4,
+                ProductName ="Apple iMac 27 (2017) MNE92N/A 3,4 GHz 5K",
+                ImgUrl = "https://image.coolblue.io/products/799313?width=500&height=500" ,
+                ProductPrice = 3000,
+                Stock = 20,
+                spec1 = "1000Gb HDD",
+                spec2 = "500gb SSD",
+                spec3 = "intel core i8",
+                spec4 = "Nvidia gtx1080",
+                spec5 = "17inch screen",
+                OldPrice = 0,
+                ProductDescription =""
+
+            };
+
+
+            _context.SaveChanges();
+            
+
 
             var allprods = _context.Products;
 

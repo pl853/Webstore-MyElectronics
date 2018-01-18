@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MailKit;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace Webstore_MyElectronics.Controllers
 {
@@ -32,6 +35,33 @@ namespace Webstore_MyElectronics.Controllers
         }
         public ActionResult  Index()
         {
+
+            var products = _context.Products.Where(i=>i.Stock ==0);
+
+            if(products != null)
+            {
+                foreach (var item in products)
+                {
+                    var message = new MimeMessage();
+                    message.From.Add(new MailboxAddress("ManageEmail", "freddydacruz90@gmail.com"));
+                    message.To.Add(new MailboxAddress("Management Email", "pieter1212112@gmail.com"));
+                    message.Subject = "Order Confirmed";
+                    message.Body = new TextPart("plain")
+                    {
+                        Text =  item.ProductName + " is out of stock Please order more!"
+                        
+                    };
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587, false);  
+                        client.Authenticate("freddydacruz90@gmail.com", password: "c374d1bb");
+        
+                        client.Send(message);
+        
+                        client.Disconnect(true);
+                    } 
+                }
+            }
   
             var montjan=CreateMonthlyRevenue("jan");
             var montfeb=CreateMonthlyRevenue("feb");
